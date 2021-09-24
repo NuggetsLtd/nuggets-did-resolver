@@ -1,0 +1,18 @@
+{
+  "testMatch": [
+    "**/?(*.)+(spec|test).[jt]s?(x)"
+  ],
+  "coverageDirectory": "reports/junit/jest/coverage",
+  "collectCoverageFrom": [
+    "**/src/**/*.js",
+    "!**/src/index.js"
+  ],
+  "coverageThreshold": {
+    "global": {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100
+    }
+  }
+}

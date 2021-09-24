@@ -1,0 +1,36 @@
+{
+  "name": "@nuggetslife/nuggets-did-resolver",
+  "version": "0.0.10",
+  "description": "DID (Decentralised Identifier Document) Resolver for the Nuggets network",
+  "main": "src/index.js",
+  "repository": "https://github.com/NuggetsLtd/nuggets-did-resolver.git",
+  "author": {
+    "name": "Nuggets Ltd",
+    "email": "support@nuggets.life",
+    "url": "http://nuggets.life"
+  },
+  "contributors": [
+    "Andrew Lord (andrew.lord@nuggets.life)"
+  ],
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "lint": "eslint . --ignore-path .gitignore",
+    "test": "jest --config jest.config.json",
+    "test:ci": "yarn test --ci --coverage --maxWorkers=2 --detectOpenHandles --forceExit",
+    "test:watch": "yarn test --watch",
+    "audit:ci": "improved-yarn-audit --min-severity moderate  --retry-on-network-failure  --ignore-dev-deps"
+  },
+  "devDependencies": {
+    "@appliedblockchain/eslint-config": "^3.0.0",
+    "eslint": "^7.32.0",
+    "improved-yarn-audit": "^2.3.3",
+    "jest": "^27.2.1"
+  },
+  "eslintConfig": {
+    "extends": "@appliedblockchain/eslint-config",
+    "globals": {
+      "def": true,
+      "xcontext": true
+    }
+  }
+}
