@@ -20,6 +20,13 @@
     "test:watch": "yarn test --watch",
     "audit:ci": "improved-yarn-audit --min-severity moderate  --retry-on-network-failure  --ignore-dev-deps"
   },
+  "dependencies": {
+    "@nuggetslife/helpers": "^1.5.9",
+    "axios": "^0.21.1",
+    "bs58": "^4.0.1",
+    "config": "^3.3.6",
+    "node-cache": "^5.1.2"
+  },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^3.0.0",
     "eslint": "^7.32.0",
