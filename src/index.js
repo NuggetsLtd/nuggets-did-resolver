@@ -82,13 +82,13 @@ const _resolve = async (did, parsed, didResolver, options) => {
     // retreve DID document & set in cache if not already set
     if (!didDocument) {
       // attempt to retrieve DID document (throws on not found, and other errors)
-      const { response: { data } } = await axios.get(`${baseUrl}/nugget/${ethereumAddress}/did`)
+      const { data: { data: didDoc } } = await axios.get(`${baseUrl}/nugget/${ethereumAddress}/did`)
 
       // store DID document in cache
-      cache.set(did, data)
+      cache.set(did, didDoc)
 
       // set did document response
-      didDocument = data
+      didDocument = didDoc
     }
 
     // return DIDResolutionResult object
