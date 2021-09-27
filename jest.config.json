@@ -4,8 +4,7 @@
   ],
   "coverageDirectory": "reports/junit/jest/coverage",
   "collectCoverageFrom": [
-    "**/src/**/*.js",
-    "!**/src/index.js"
+    "**/src/**/*.js"
   ],
   "coverageThreshold": {
     "global": {
@@ -14,5 +13,8 @@
       "lines": 100,
       "statements": 100
     }
-  }
+  },
+  "restoreMocks": true,
+  "clearMocks": true,
+  "resetMocks": true
 }
