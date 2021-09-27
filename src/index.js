@@ -95,8 +95,9 @@ const _resolve = async (did, parsed, didResolver, options) => {
     }
 
   } catch (error) {
+    const apiErrorMsg = error && error.response && error.response.data && error.response.data.error
 
-    if (error.response.data.error === 'Nugget not found') {
+    if (apiErrorMsg === 'Nugget not found') {
       return {
         ...responseStructure,
         didResolutionMetadata: {
@@ -109,8 +110,8 @@ const _resolve = async (did, parsed, didResolver, options) => {
     return {
       ...responseStructure,
       didResolutionMetadata: {
-        error: error.name,
-        message: `Unable to resolve DID: Error: ${error.message}`
+        error: error.name || 'unknownError',
+        message: `Unable to resolve DID: Error: ${apiErrorMsg || error.message}`
       }
     }
   }
