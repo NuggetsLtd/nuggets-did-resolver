@@ -35,7 +35,7 @@ describe('DID Resolver', () => {
 
       it('where document NOT cached', async () => {
 
-        jest.spyOn(axios, 'get').mockResolvedValueOnce({ response: { data: didDocument } })
+        jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: { data: didDocument } })
 
         await expect(resolver.resolve(`did:nuggets:${addressBase58}`))
           .resolves.toStrictEqual({
@@ -51,7 +51,7 @@ describe('DID Resolver', () => {
 
       it('where document cached', async () => {
 
-        jest.spyOn(axios, 'get').mockResolvedValueOnce({ response: { data: didDocument } })
+        jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: { data: didDocument } })
 
         await expect(resolver.resolve(`did:nuggets:${addressBase58}`))
           .resolves.toStrictEqual({
