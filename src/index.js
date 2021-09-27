@@ -1,10 +1,11 @@
 const axios = require('axios')
-const config = require('config')
 const bs58 = require('bs58')
 const NodeCache = require('node-cache')
+const config = require('../config.json')
+const { NODE_ENV } = process.env
 
-const apiConfig = config.get('api')
-const baseUrl = (apiConfig && apiConfig.baseUrl) || 'https://api.nuggets.life/api/v1'
+/* istanbul ignore next */
+const baseUrl = config.api.baseUrl[NODE_ENV] || config.api.baseUrl['production']
 
 const cache = new NodeCache()
 
