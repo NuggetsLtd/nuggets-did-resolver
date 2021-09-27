@@ -24,11 +24,11 @@
     "@nuggetslife/helpers": "^1.5.9",
     "axios": "^0.21.1",
     "bs58": "^4.0.1",
-    "config": "^3.3.6",
     "node-cache": "^5.1.2"
   },
   "devDependencies": {
     "@appliedblockchain/eslint-config": "^3.0.0",
+    "did-resolver": "^3.1.0",
     "eslint": "^7.32.0",
     "improved-yarn-audit": "^2.3.3",
     "jest": "^27.2.1"
