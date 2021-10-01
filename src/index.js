@@ -95,7 +95,19 @@ const _resolve = async (did, parsed, didResolver, options) => {
     // set did document response
     if (parsed.fragment) {
       const didFragment = jp.query(didDocument, `$..[?(@.id=="${parsed.didUrl}")]`)
-      didDocument = didFragment.length ? didFragment[0] : null
+
+      if (!didFragment.length) {
+        // return DIDResolutionResult object
+        return {
+          ...responseStructure,
+          didResolutionMetadata: {
+            error: 'notFound',
+            message: 'Unable to resolve DID: Error: Fragment Not Found'
+          }
+        }
+      }
+
+      didDocument = didFragment[0]
     }
 
     // return DIDResolutionResult object

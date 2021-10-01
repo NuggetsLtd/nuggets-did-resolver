@@ -82,7 +82,8 @@ describe('DID Resolver', () => {
           await expect(resolver.resolve(`did:nuggets:${addressBase58}#notMatched`))
             .resolves.toStrictEqual({
               didResolutionMetadata: {
-                'contentType': 'application/did+ld+json'
+                'error': 'notFound',
+                'message': 'Unable to resolve DID: Error: Fragment Not Found'
               },
               didDocument: null,
               didDocumentMetadata: {}
