@@ -89,11 +89,13 @@ const _resolve = async (did, parsed, didResolver, options) => {
       cache.set(did, didDoc)
 
       // set did document response
-      if (parsed.fragment) {
-        didDocument = jp.query(didDoc, `$..[?(@.id=="${parsed.didUrl}")]`)
-      } else {
-        didDocument = didDoc
-      }
+      didDocument = didDoc
+    }
+
+    // set did document response
+    if (parsed.fragment) {
+      const didFragment = jp.query(didDocument, `$..[?(@.id=="${parsed.didUrl}")]`)
+      didDocument = didFragment.length ? didFragment[0] : null
     }
 
     // return DIDResolutionResult object
