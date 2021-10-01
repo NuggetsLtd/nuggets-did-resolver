@@ -1,0 +1,24 @@
+{
+  "@context": [
+    "https://www.w3.org/ns/did/v1/",
+    "https://w3id.org/security/v2",
+    "https://w3id.org/security/suites/secp256k1-2019/v1"
+  ],
+  "id": "did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU",
+  "verificationMethod": [
+    {
+      "id": "did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU#controller",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU",
+      "publicKeyBase58": "3TTU33gSAC8BD4mGotwKgJL1ZZMZe4z38v9vM2J3abdoDp7sXtyfGmg86UpsLUnr16mRwd4qCEeCmL2wuQsRCDrK"
+    },
+    {
+      "type": "Bls12381G2Key2020",
+      "id": "did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU#bls12381g2",
+      "controller": "did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU",
+      "publicKeyBase58": "tbubjAE7RyoBjBzUekWLUMSDBNuRAtUtHYoCXgfHe6dio9Yc1yDjzZDPp1CbCyELirdEczRJSrhMQtGTCL1nqutmzp69ufWQuXhMK9oiF3FQhvZURqfiJtpfW1hshL9kSW2"
+    }
+  ],
+  "authentication": ["did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU#controller"],
+  "assertionMethod": ["did:nuggets:2wcsDkJjzBMrD8nPkaJZKkY8AWVU#controller"]
+}

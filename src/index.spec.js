@@ -3,6 +3,7 @@ const didResolver = require('.')
 const { Resolver } = require('did-resolver')
 const { toBuffer } = require('@nuggetslife/helpers')
 const bs58 = require('bs58')
+const didDocument = require('../test/didDocument.json')
 
 const nuggetsResolver = didResolver.getResolver()
 const resolver = new Resolver(nuggetsResolver)
@@ -25,13 +26,6 @@ describe('DID Resolver', () => {
 
     describe('should resolve a DID correctly', () => {
       const addressBase58 = bs58.encode(toBuffer(addresses[0]))
-      const didDocument = {
-        '@context': [
-          'https://www.w3.org/ns/did/v1/',
-          'https://w3id.org/security/v2',
-          'https://w3id.org/security/suites/secp256k1-2019/v1'
-        ]
-      }
 
       it('where document NOT cached', async () => {
 
@@ -63,6 +57,38 @@ describe('DID Resolver', () => {
           })
 
         expect(axios.get).toHaveBeenCalledTimes(0)
+      })
+
+      describe('where document fragment requested', () => {
+
+        it('and fragment is matched', async () => {
+
+          jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: { data: didDocument } })
+
+          await expect(resolver.resolve(`did:nuggets:${addressBase58}#bls12381g2`))
+            .resolves.toStrictEqual({
+              didResolutionMetadata: {
+                'contentType': 'application/did+ld+json'
+              },
+              didDocument: didDocument.verificationMethod[1],
+              didDocumentMetadata: {}
+            })
+        })
+
+        it('and fragment is not matched', async () => {
+
+          jest.spyOn(axios, 'get').mockResolvedValueOnce({ data: { data: didDocument } })
+
+          await expect(resolver.resolve(`did:nuggets:${addressBase58}#notMatched`))
+            .resolves.toStrictEqual({
+              didResolutionMetadata: {
+                'contentType': 'application/did+ld+json'
+              },
+              didDocument: null,
+              didDocumentMetadata: {}
+            })
+        })
+
       })
 
     })
