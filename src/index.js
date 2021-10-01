@@ -1,5 +1,6 @@
 const axios = require('axios')
 const bs58 = require('bs58')
+const jp = require('jsonpath')
 const NodeCache = require('node-cache')
 const config = require('../config.json')
 const { NODE_ENV } = process.env
@@ -88,7 +89,11 @@ const _resolve = async (did, parsed, didResolver, options) => {
       cache.set(did, didDoc)
 
       // set did document response
-      didDocument = didDoc
+      if (parsed.fragment) {
+        didDocument = jp.query(didDoc, `$..[?(@.id=="${parsed.didUrl}")]`)
+      } else {
+        didDocument = didDoc
+      }
     }
 
     // return DIDResolutionResult object
