@@ -1,6 +1,6 @@
 {
   "name": "@nuggetslife/nuggets-did-resolver",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "DID (Decentralised Identifier Document) Resolver for the Nuggets network",
   "main": "src/index.js",
   "repository": "https://github.com/NuggetsLtd/nuggets-did-resolver.git",
