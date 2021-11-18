@@ -3,10 +3,8 @@ const bs58 = require('bs58')
 const jp = require('jsonpath')
 const NodeCache = require('node-cache')
 const config = require('../config.json')
-const { NODE_ENV } = process.env
 
-/* istanbul ignore next */
-const baseUrl = config.api.baseUrl[NODE_ENV] || config.api.baseUrl['production']
+let baseUrl
 
 const cache = new NodeCache()
 
@@ -139,7 +137,16 @@ const _resolve = async (did, parsed, didResolver, options) => {
   }
 }
 
-const getResolver = () => {
+/**
+ * Get Nuggets DID Method Resolver
+ *
+ * @param {String} [environment] - Environment to use for DID Resolution
+ * @returns {Object}
+ */
+const getResolver = (environment = 'production') => {
+  // set base url for DID Resolution endpoint
+  baseUrl = config.api.baseUrl[environment]
+
   return {
     nuggets: _resolve
   }
