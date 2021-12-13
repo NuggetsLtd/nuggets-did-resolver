@@ -2,6 +2,7 @@
 node_modules
 test
 reports
+doc
 .gitignore
 jest.config.json
 yarn-error.log
