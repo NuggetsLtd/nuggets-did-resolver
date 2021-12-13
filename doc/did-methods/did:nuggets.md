@@ -12,7 +12,7 @@
 
 ## Abstract
 
-The Nuggets [DID Method](https://w3c.github.io/did-core/#methods) is intended for use with accounts created on the Nuggets Network. The intention is to allow interoperability with users from other systems supporting DIDs, whilst maintaining a high level or security and privacy for users.
+The Nuggets [DID Method](https://w3c.github.io/did-core/#methods) is intended for use with accounts created on the Nuggets Network. The intention is to allow interoperability with users from other systems supporting DIDs, whilst maintaining a high level of security and privacy for users.
 
 [Nuggets](https://nuggets.life/) is a Self-Sovereign verified digital identity and payment platform. Our main focus is on security and privacy of user's data. As such, Nuggets has no access to any of the user data stored on our systems.
 
@@ -52,7 +52,7 @@ Where `0x47dCBa7a9a102338D3dA1198662e138D11185149` is the hexadecimal address re
 
 ## CRUD Operations
 
-Due to DIDs on Nuggets being linked to the underlying user (Ethereum) account, the DID Methd operations are linked to the operations for creating, reading, updating and deletion of accounts on the system.
+Due to DIDs on Nuggets being linked to the underlying user (Ethereum) account, the DID Method operations are linked to the operations for creating, reading, updating and deletion of accounts on the system.
 
 ### Create
 End users interact with the Nuggets system predominantly by means of a mobile app, available on both iOS and Android:
@@ -64,9 +64,9 @@ When a user first opens the app, a random [BIP-39 Mnemonic](https://github.com/b
 
 This wallet is then used to derive a [DPKI](https://hackernoon.com/decentralized-public-key-infrastructure-dpki-what-is-it-and-why-does-it-matter-babee9d88579) keypair for the [DID Controller](https://w3c.github.io/did-core/#dfn-did-controllers) of the account.
 
-In order for a user to be validated on the Nuggets system, the must then pass through the in-app onboarding KYC process. The output of this process is a verifiable credential with the proven information, which the user then uses to register an account on the network.
+In order for a user to be validated on the Nuggets system, they must then pass through the in-app onboarding KYC process. The output of this process is a verifiable credential with the proven information, which the user then uses to register an account on the network.
 
-Once a user has registered, they will then be able to generate a DID Document with their  public keys and service endpoints for sharing with other parties. These DID Documents can either be published publicly, or exchanged over private channels.
+Once a user has registered, they will then be able to generate a DID Document with their public keys and service endpoints for sharing with other parties. These DID Documents can either be published publicly, or exchanged over private channels.
 
 Due to the fact that the user has an HD Wallet, there is the option to derive child accounts for interaction with third parties, where nothing about this account would be written to the ledger, but expressly for peer to peer connections. So, a user could generate a new DID Document for each party that it interacts with (or even each interaction), eliminating the potential for correlation of accounts.
 
