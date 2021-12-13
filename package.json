@@ -1,5 +1,5 @@
 {
-  "name": "@nuggetslife/nuggets-did-resolver",
+  "name": "nuggets-did-resolver",
   "version": "0.2.0",
   "description": "DID (Decentralised Identifier Document) Resolver for the Nuggets network",
   "main": "src/index.js",
