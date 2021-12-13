@@ -9,7 +9,7 @@ It supports the proposed Decentralized Identifiers spec from the W3C Credentials
 
 It requires the did-resolver library, which is the primary interface for resolving DIDs.
 
-## DID method
+## DID Method
 
 To encode a DID for an Ethereum address on the nuggets network, convert the address to Base58 and prepend `did:nuggets:`.
 
