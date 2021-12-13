@@ -38,7 +38,7 @@ did:nuggets:
 ## Method Specific ID
 The `method-specific-id` component of a Nuggets DID maps to a single account on the Nuggets network.
 
-Nuggets uses a private Ethereum network as a ledger for management of user accounts. This means that each account no the Nuggets network is identified by a unique Ethereum address. The `method-specific-id` is a Base58* representation of this Ethereum address.
+Nuggets uses a private Ethereum network as a ledger for management of user accounts. This means that each account on the Nuggets network is identified by a unique Ethereum address. The `method-specific-id` is a Base58* representation of this Ethereum address.
 
 So, an Ethereum account with the address of: `0x47dCBa7a9a102338D3dA1198662e138D11185149` would map to a DID of:
 
@@ -67,6 +67,8 @@ This wallet is then used to derive a [DPKI](https://hackernoon.com/decentralized
 In order for a user to be validated on the Nuggets system, the must then pass through the in-app onboarding KYC process. The output of this process is a verifiable credential with the proven information, which the user then uses to register an account on the network.
 
 Once a user has registered, they will then be able to generate a DID Document with their  public keys and service endpoints for sharing with other parties. These DID Documents can either be published publicly, or exchanged over private channels.
+
+Due to the fact that the user has an HD Wallet, there is the option to derive child accounts for interaction with third parties, where nothing about this account would be written to the ledger, but expressly for peer to peer connections. So, a user could generate a new DID Document for each party that it interacts with (or even each interaction), eliminating the potential for correlation of accounts.
 
 ### Read
 
