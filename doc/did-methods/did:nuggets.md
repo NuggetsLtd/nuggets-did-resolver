@@ -25,7 +25,7 @@ The Nuggets [DID Method](https://w3c.github.io/did-core/#methods) is intended fo
 
 Users decide if and when they want to share their data, and do so on their own terms.
 
-The `did:nuggets:` [DID Method](https://w3c.github.io/did-core/#methods) is used to resolve the DID Documents for partners on the Nuggets system, so that users can securely interact with other parties on the system via encryption, signing & verification of data.
+The Nuggets [DID Method](https://w3c.github.io/did-core/#methods) is used to resolve the DID Documents for partners on the Nuggets system, so that users can securely interact with other parties on the system via encryption, signing & verification of data.
 
 ## DID Scheme
 
@@ -50,12 +50,76 @@ Where `0x47dCBa7a9a102338D3dA1198662e138D11185149` is the hexadecimal address re
 *Note*: *The Base 58 representation mentioned here is the Bitcoin version of the [Base 58 encoding scheme](https://tools.ietf.org/id/draft-msporny-base58-01.html).
 
 ## CRUD Operations
-The method supports the following operations:
+
+Due to DIDs on Nuggets being linked to the underlying user (Ethereum) account, the DID Methd operations are linked to the operations for creating, reading, updating and deletion of accounts on the system.
 
 ### Create
+End users interact with the Nuggets system predominantly by means of a mobile app, available on both iOS and Android:
+
+- [iOS](https://apps.apple.com/gb/app/nuggets-pay-id/id1216139887)
+- [Andriod](https://play.google.com/store/apps/details?id=life.nuggets.app)
+
+When a user first opens the app, a random [BIP-39 Mnemonic](https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki) is generated, which then is used for the generation of a HD (hierarchical deterministic) wallet.
+
+This wallet is then used to derive a [DPKI](https://hackernoon.com/decentralized-public-key-infrastructure-dpki-what-is-it-and-why-does-it-matter-babee9d88579) keypair for the [DID Controller](https://w3c.github.io/did-core/#dfn-did-controllers) of the account.
+
+In order for a user to be validated on the Nuggets system, the must then pass through the in-app onboarding KYC process. The output of this process is a verifiable credential with the proven information, which the user then uses to register an account on the network.
+
+Once a user has registered, they will then be able to generate a DID Document with their  public keys and service endpoints for sharing with other parties. These DID Documents can either be published publicly, or exchanged over private channels.
+
 ### Read
+
+A registered DID may be resolved to the corresponding DID Document by means of an HTTP GET request to `https://api-dev.internal-nuggets.life/api/v1/nugget/{ethereum_address}/did`, for example:
+```sh
+https://api-dev.internal-nuggets.life/api/v1/nugget/0xd2339bA4AfBF83C1A4a7F682AE962446b7DA8292/did
+```
+
+Example successful response structure:
+```json
+{
+  "success": true,
+  "data": {
+    "@context": [
+      "https://www.w3.org/ns/did/v1/",
+      "https://w3id.org/security/v2",
+      "https://w3id.org/security/suites/secp256k1-2019/v1"
+    ],
+    "id": "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB",
+    "verificationMethod": [
+      {
+      "id": "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB#controller",
+      "type": "EcdsaSecp256k1VerificationKey2019",
+      "controller": "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB",
+      "publicKeyBase58": "5XPH5TZv5XeUUzd4sXw7NNCzQL7DN1vqGKgzBs3DBLnhBGTNxRaYtaeVpTJYnaunrsoGyZh95CiYq9rr3zFCkD9F"
+      },
+      {
+      "type": "Bls12381G2Key2020",
+      "id": "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB#bls12381g2",
+      "controller": "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB",
+      "publicKeyBase58": "nbvXR5XYQ9sApPWAgeqXngFtDZgbqX36hiJffnsLsbkNmkSoj1i6RMb1CbgR9Cx9mGD7MG7whnR3ymj5A9GA2xzqEUuYoXNGKGVqTGmVWdNQ6bvA9oLg9m6efh9Hc6fBZsi"
+      }
+    ],
+    "authentication": [
+      "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB#controller"
+    ],
+    "assertionMethod": [
+      "did:nuggets:3vrLyshBQ8TrJJ2FcNHbm2kzahhB#bls12381g2"
+    ]
+  }
+}
+```
+
 ### Update
+DID Documents can be updated by the DID Controller, but this will only happen in the following circumstances:
+
+- Key addition
+- Key rotation
+- Service endpoint update
+
 ### Deactivate (Delete)
+Users are able to delete their account via the Nuggets app. Upon doing this, all data related to their account will be deleted from the Nuggets systems. This includes published DID Documents.
+
+Once an account has been deleted on the Nuggets system, it is no longer able to be recovered.
 
 ## Security Considerations
 
