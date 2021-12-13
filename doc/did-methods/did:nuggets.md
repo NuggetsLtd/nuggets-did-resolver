@@ -6,6 +6,7 @@
 
 **Authors**
   - [Andrew Lord](https://github.com/amlord) ([Nuggets Ltd](https://nuggets.life/))
+  - [Alastair Johnson](https://github.com/Alastairij) ([Nuggets Ltd](https://nuggets.life/))
 
 ---
 
@@ -125,3 +126,11 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
 
 ## Privacy Considerations
 
+For DID Method implementation, the DID Controller **MUST**:
+
+- NOT store identity information in a DID document
+- protect integrity and confidentiality of user personal data
+- comply with all applicable privacy and data protection laws, regulations and principles
+- ensure that necessary security controls are in place to protect user personal data
+- ensure that personal data is NOT written to any system or application log
+- ensure that the application does NOT store any personal data in temporary memory
