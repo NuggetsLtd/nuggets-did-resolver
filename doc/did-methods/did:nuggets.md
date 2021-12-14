@@ -5,8 +5,9 @@
 # Nuggets DID Method
 
 **Authors**
-  - [Andrew Lord](https://github.com/amlord) ([Nuggets Ltd](https://nuggets.life/))
   - [Alastair Johnson](https://github.com/Alastairij) ([Nuggets Ltd](https://nuggets.life/))
+  - [Andrew Lord](https://github.com/amlord) ([Nuggets Ltd](https://nuggets.life/))
+  - [Emmanuel Acheampong](https://github.com/MannyA2k) ([Nuggets Ltd](https://nuggets.life/))
 
 ---
 
@@ -153,6 +154,7 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
   - be aware of OWASP [Mobile](https://github.com/OWASP/owasp-mstg/tree/master/Checklists) and [Web](https://github.com/OWASP/wstg) testing guides
   - only support strong cipher suites
   - implement rate limiting & caching measures to ensure not to overload the platform
+  - take steps to prevent sending of unsolicited messages to other parties
 - DID Controller developers **SHOULD NOT**:
   - re-use cryptographic keys for multiple purposes
 
