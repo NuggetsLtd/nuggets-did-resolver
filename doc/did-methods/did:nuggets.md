@@ -126,13 +126,42 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
 
 ## Security Considerations
 
+- All communication must use HTTPS with TLS 1.2 or greater with a forward secret cipher
+- Where a key compromise is identified, the DID Controller **MUST** either:
+    - rotate out the compromised key
+    - delete the user account (and associated DID)
+- DID Controller developers **MUST**:
+    - frequently scan for third party package vulnerabilities
+    - undertake periodic security audits by external third parties
+    - store all private keys & secrets securely (for example; using the keychain in iOS)
+    - use certificate pinning to prevent man-in-the-middle attacks
+    - ensure that the application architecture is secure
+    - share sensitive information through TLS and JWE encryption (for example; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
+    - take steps to detect jailbroken / rooted mobile devices:
+      - users should be informed of the risks, or prevented from running the application
+    - ensure App Transport Security (ATS) is turned on (iOS devices)
+    - ensure automatic reference counting (ARC) is enabled (iOS devices)
+    - implement code tamper detection (Android devices)
+- DID Controller developers **MUST NOT**:
+    - release a package containing known exploitable vulnerabilities
+    - use logging software to write to external services 
+      - due to potential for [personal identifiable information](https://gdpr.eu/eu-gdpr-personal-data/) (PII) data exposure
+    - include secrets in application code
+- DID Controller developers **SHOULD**:
+  - be aware of OWASP [Mobile](https://github.com/OWASP/owasp-mstg/tree/master/Checklists) and [Web](https://github.com/OWASP/wstg) testing guides
+  - only support strong cipher suites
+  - implement rate limiting & caching measures to ensure not to overload the platform
+- DID Controller developers **SHOULD NOT**:
+  - re-use cryptographic keys for multiple purposes
+
 ## Privacy Considerations
 
 For DID Method implementation, the DID Controller **MUST**:
-
-- NOT store identity information in a DID document
-- protect integrity and confidentiality of user personal data
+- protect integrity and confidentiality of user [personal identifiable information](https://gdpr.eu/eu-gdpr-personal-data/) (PII) data
 - comply with all applicable privacy and data protection laws, regulations and principles
-- ensure that necessary security controls are in place to protect user personal data
-- ensure that personal data is NOT written to any system or application log
-- ensure that the application does NOT store any personal data in temporary memory
+- ensure that necessary security controls are in place to protect user PII data
+
+For DID Method implementation, the DID Controller **MUST NOT**:
+- store PII in a DID document
+- write PII data to any system or application log
+- store any PII data in temporary memory
