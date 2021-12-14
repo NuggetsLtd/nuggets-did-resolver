@@ -23,7 +23,11 @@ The Nuggets [DID Method](https://w3c.github.io/did-core/#methods) is intended fo
 
 ## Introduction
 
-[Nuggets](https://nuggets.life/) is an e-commerce payments and ID platform. It stores user's personal and payment data securely; data is end-to-end encrypted, so not even Nuggets can see the data passing through & stored on our systems.
+[Nuggets](https://nuggets.life/) delivers trusted transactions through verified digital identities for every transaction. 
+
+Nuggets is a Self-Sovereign, verified digital identity and payment platform. It enables trusted transactions through verified digital identities, a personal cloud vault, and auditable nuggets of data. 
+
+Personal and payment data is owned and controlled by the user.
 
 Users decide if and when they want to share their data, and do so on their own terms.
 
