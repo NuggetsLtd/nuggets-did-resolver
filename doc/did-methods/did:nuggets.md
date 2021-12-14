@@ -5,8 +5,9 @@
 # Nuggets DID Method
 
 **Authors**
-  - [Andrew Lord](https://github.com/amlord) ([Nuggets Ltd](https://nuggets.life/))
   - [Alastair Johnson](https://github.com/Alastairij) ([Nuggets Ltd](https://nuggets.life/))
+  - [Andrew Lord](https://github.com/amlord) ([Nuggets Ltd](https://nuggets.life/))
+  - [Emmanuel Acheampong](https://github.com/MannyA2k) ([Nuggets Ltd](https://nuggets.life/))
 
 ---
 
@@ -136,7 +137,9 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
     - store all private keys & secrets securely (for example; using the keychain in iOS)
     - use certificate pinning to prevent man-in-the-middle attacks
     - ensure that the application architecture is secure
-    - share sensitive information through TLS and JWE encryption (for example; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
+    - share sensitive information (for example via; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
+      - through TLS and JWE encryption
+      - via a mediator(s) to provide herd privacy and mitigate surveillance between parties
     - take steps to detect jailbroken / rooted mobile devices:
       - users should be informed of the risks, or prevented from running the application
     - ensure App Transport Security (ATS) is turned on (iOS devices)
@@ -151,6 +154,7 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
   - be aware of OWASP [Mobile](https://github.com/OWASP/owasp-mstg/tree/master/Checklists) and [Web](https://github.com/OWASP/wstg) testing guides
   - only support strong cipher suites
   - implement rate limiting & caching measures to ensure not to overload the platform
+  - take steps to prevent sending of unsolicited messages to other parties
 - DID Controller developers **SHOULD NOT**:
   - re-use cryptographic keys for multiple purposes
 
