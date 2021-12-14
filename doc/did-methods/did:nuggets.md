@@ -135,6 +135,8 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
     - undertake periodic security audits by external third parties
     - store all private keys & secrets securely (for example; using the keychain in iOS)
     - use certificate pinning to prevent man-in-the-middle attacks
+    - ensure that the application architecture is secure
+    - share sensitive information through TLS and JWE encryption (for example; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
     - take steps to detect jailbroken / rooted mobile devices:
       - users should be informed of the risks, or prevented from running the application
     - ensure App Transport Security (ATS) is turned on (iOS devices)
@@ -147,6 +149,10 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
     - include secrets in application code
 - DID Controller developers **SHOULD**:
   - be aware of OWASP [Mobile](https://github.com/OWASP/owasp-mstg/tree/master/Checklists) and [Web](https://github.com/OWASP/wstg) testing guides
+  - only support strong cipher suites
+  - implement rate limiting & caching measures to ensure not to overload the platform
+- DID Controller developers **SHOULD NOT**:
+  - re-use cryptographic keys for multiple purposes
 
 ## Privacy Considerations
 
