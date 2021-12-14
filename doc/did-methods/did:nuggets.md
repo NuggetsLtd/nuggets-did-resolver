@@ -136,7 +136,9 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
     - store all private keys & secrets securely (for example; using the keychain in iOS)
     - use certificate pinning to prevent man-in-the-middle attacks
     - ensure that the application architecture is secure
-    - share sensitive information through TLS and JWE encryption (for example; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
+    - share sensitive information (for example via; [DIDComm Messaging](https://identity.foundation/didcomm-messaging/spec/))
+      - through TLS and JWE encryption
+      - via a mediator(s) to provide herd privacy and mitigate surveillance between parties
     - take steps to detect jailbroken / rooted mobile devices:
       - users should be informed of the risks, or prevented from running the application
     - ensure App Transport Security (ATS) is turned on (iOS devices)
