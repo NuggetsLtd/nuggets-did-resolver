@@ -164,6 +164,31 @@ Once an account has been deleted on the Nuggets system, it is no longer able to 
 
 ## Privacy Considerations
 
+API endpoints for the *Nuggets Network* are maintained and managed by Nuggets Ltd. Nuggets has from the start been focussed on users "taking back control" of their data, by means of Self-Sovereign Identity.
+
+Great care has been taken to ensure that no-one in the network has access to any information about a user, unless a user has specifically shared it with them (not even maintainers of the network itself).
+
+In practice, this means:
+
+- Nuggets has no access to any user data
+- All data *passed via* the Nuggets Network is encrypted by the user for the intended recipient only
+- All data *stored on* the Nuggets Network is encrypted by the user for their own retrieval & use
+  - the only exception to this is the public DID Documents for Nuggets partners, which need to be discoverable
+- For KYC checks;
+  - A scan of the user's identity document is captured on their device, along with a live video of the user for comparision. This is exchanged directly with the KYC provider, and is required for KYC verification of the user
+  - Agreements are in place with the KYC provider that they will not keep records of any data or transactions
+  - The KYC provider generates a verifiable credential for the user with OCR data from their identity document, which they can then use to prove various information about themselves to other parties
+  - An account is created on the Nuggets Network by a user providing a *zero-knowledge proof* of a KYC check. No [personal identifiable information](https://gdpr.eu/eu-gdpr-personal-data/) (PII) data is passed to the API endpoint
+- Partners on the *Nuggets Network* must adhere to stringent rules about how they treat data that a user has shared with them
+- Transactional data can only be stored about a given transaction for *regulatory purposes*. The data in this case is encrypted for only the partner & user interacting, and will be stamped with a specific time of expiry upon storage
+- A user is always given clear information asto why & with whom each piece data is to be shared. It will then only be be shared with the express approval of the user
+- Server logs on the Nuggets Network are solely for issue resolution, data flow monitoring & data management
+- The Nuggets Network is regularly audited by third party security companies
+- At any point in time, a user can remove their account from the Nuggets Network. All data associated to that user will be removed from the network.
+  - The only exception to this is data stored for *regulatory purposes*, which will remain in place until the agree upon expiry date
+
+Nuggets Ltd provides a user agent for interacting with the Nuggets Network. This agent acts as the DID Controlle, and as such, follows these rules:
+
 For DID Method implementation, the DID Controller **MUST**:
 - protect integrity and confidentiality of user [personal identifiable information](https://gdpr.eu/eu-gdpr-personal-data/) (PII) data
 - comply with all applicable privacy and data protection laws, regulations and principles
